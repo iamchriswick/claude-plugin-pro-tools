@@ -45,7 +45,7 @@
   // Use 'postCreateCommand' to run commands after the container is created.
   // A new volume is owned by root; this hands it to the "node" user so Claude Code can write to it.
   // Then, once the repo has a package.json, it installs the dev dependencies, which also turns on the git hooks.
-  "postCreateCommand": "sudo chown -R node:node /home/node/.claude && if [ -f package.json ]; then pnpm install; fi",
+  "postCreateCommand": "sudo chown -R node:node /home/node/.claude && sudo chown -R node:npm /usr/local/share/npm-global/lib/node_modules/@anthropic-ai && if [ -f package.json ]; then pnpm install; fi",
 
   // Configure tool-specific properties.
   "customizations": {
